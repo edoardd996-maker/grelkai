@@ -41,22 +41,40 @@
 
   /* ===== HERO ===== */
   .hero{
-    background:
-      radial-gradient(circle at 15% 10%, rgba(241,146,0,0.16), transparent 45%),
-      radial-gradient(circle at 90% 0%, rgba(231,79,29,0.14), transparent 50%),
-      linear-gradient(180deg,#1F1512 0%, #2B1B12 55%, #3A2013 100%);
+    background:linear-gradient(120deg, #2B1006 0%, #B93D14 22%, #E74F1D 45%, #F19200 65%, #B93D14 82%, #2B1006 100%);
+    background-size:320% 320%;
+    animation:heroGradientMove 16s ease-in-out infinite;
     color:var(--white);
     padding:48px 0 72px;
     position:relative;
     overflow:hidden;
+  }
+  @keyframes heroGradientMove{
+    0%{background-position:0% 30%;}
+    50%{background-position:100% 70%;}
+    100%{background-position:0% 30%;}
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    left:-120px;top:-140px;
+    width:360px;height:360px;
+    background:radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%);
+    border-radius:50%;
+    animation:heroBlobFloat 9s ease-in-out infinite;
   }
   .hero::after{
     content:"";
     position:absolute;
     right:-120px;bottom:-160px;
     width:420px;height:420px;
-    background:radial-gradient(circle, rgba(241,146,0,0.35), transparent 70%);
+    background:radial-gradient(circle, rgba(255,227,3,0.4), transparent 70%);
     border-radius:50%;
+    animation:heroBlobFloat 11s ease-in-out infinite reverse;
+  }
+  @keyframes heroBlobFloat{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(35px,25px) scale(1.12);}
   }
   .hero-top{
     display:flex;align-items:center;justify-content:space-between;
