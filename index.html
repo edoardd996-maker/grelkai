@@ -408,11 +408,31 @@
     border-color:transparent;transform:translateY(-2px);
   }
   .footer-btn-icon{
+    position:relative;
     flex-shrink:0;width:42px;height:42px;border-radius:12px;
     background:linear-gradient(135deg, var(--primary), var(--accent));
     display:flex;align-items:center;justify-content:center;
   }
-  .footer-btn-icon svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:2.2;}
+  .footer-btn-icon svg{width:21px;height:21px;stroke:#fff;fill:none;stroke-width:2.2;position:relative;z-index:2;}
+  .footer-btn-icon::after{
+    content:"";
+    position:absolute;inset:0;
+    border-radius:12px;
+    border:2px solid var(--accent);
+    animation:footerPing 2.2s cubic-bezier(0,0,.2,1) infinite;
+  }
+  .footer-btn:nth-child(2) .footer-btn-icon::after{animation-delay:.5s;}
+  @keyframes footerPing{
+    0%{transform:scale(1);opacity:.8;}
+    75%,100%{transform:scale(1.7);opacity:0;}
+  }
+  .footer-btn{animation:footerBtnNudge 3.5s ease-in-out infinite;}
+  .footer-btn:nth-child(2){animation-delay:.25s;}
+  @keyframes footerBtnNudge{
+    0%,80%,100%{transform:translateY(0);}
+    88%{transform:translateY(-4px);}
+    94%{transform:translateY(0);}
+  }
   .footer-btn-text{display:flex;flex-direction:column;gap:2px;text-align:left;}
   .footer-btn-label{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:rgba(255,255,255,0.6);font-weight:700;}
   .footer-btn-value{font-size:16px;font-weight:800;color:#fff;}
@@ -638,12 +658,6 @@
         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Поддерживает живой диалог, отвечает на вопросы и возражения</li>
         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Квалифицирует клиента по заданным критериям</li>
       </ul>
-      <div class="badge-row">
-        <span class="badge">Успешная квалификация</span>
-        <span class="badge">Отказ</span>
-        <span class="badge">Недозвон</span>
-        <span class="badge">Автоответчик</span>
-      </div>
       <p style="font-size:14.5px;color:var(--gray-700);font-weight:700;margin-bottom:8px;">После звонка автоматически:</p>
       <ul class="feature-list" style="margin-top:0;">
         <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Создаётся сделка и контакт в CRM</li>
@@ -725,7 +739,7 @@
 
     <table class="price-table" style="margin-bottom:32px;">
       <tr><th>Количество контактов</th><th style="text-align:right">Цена за контакт</th></tr>
-      <tr><td>От 1 000 контактов</td><td class="price">80 ₽</td></tr>
+      <tr><td>От 1 000 контактов</td><td class="price">74 ₽</td></tr>
       <tr><td>От 2 000 контактов</td><td class="price">70 ₽</td></tr>
       <tr><td>От 3 000 контактов</td><td class="price">65 ₽</td></tr>
       <tr><td>От 5 000 контактов</td><td class="price">59 ₽</td></tr>
@@ -889,15 +903,29 @@
   <div class="wrap">
     <div class="section-head">
       <span class="section-kicker"><span class="dot"></span>Направление №4</span>
-      <h2>Реанимация старой базы и автоматизация отдела продаж</h2>
-      <p>Если необходимо автоматизировать коммуникацию, увеличить конверсию и внедрить AI-сотрудника в отдел продаж или поддержку — используем решения из направлений выше в связке под вашу задачу.</p>
+      <h2>AI-отдел продаж и реанимация клиентской базы</h2>
+      <p>Если у вас уже есть база клиентов или действующий отдел продаж — мы увеличим его эффективность с помощью искусственного интеллекта.</p>
     </div>
 
+    <div class="card" style="margin-bottom:28px;">
+      <p style="font-size:14.5px;color:var(--gray-700);font-weight:700;margin-bottom:14px;">Мы создаём систему, которая:</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Возвращает клиентов из старой базы</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Автоматически связывается с ними по телефону и в мессенджерах</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Отвечает на вопросы и закрывает типовые возражения</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Квалифицирует клиентов и определяет их готовность к покупке</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Передаёт менеджерам только «горячих» лидов</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Контролирует скорость обработки заявок и исключает потерю клиентов</li>
+      </ul>
+    </div>
+
+    <p style="font-size:14.5px;color:var(--gray-700);font-weight:700;margin-bottom:8px;">Что получает бизнес:</p>
     <div class="benefits-grid">
-      <div class="benefit-item"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Вернуть потерянных клиентов</div>
-      <div class="benefit-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Автоматизировать повторные касания</div>
-      <div class="benefit-item"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Снизить нагрузку на менеджеров</div>
-      <div class="benefit-item"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>Увеличить эффективность отдела продаж</div>
+      <div class="benefit-item"><svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Рост повторных продаж</div>
+      <div class="benefit-item"><svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>Увеличение конверсии без увеличения штата</div>
+      <div class="benefit-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>Экономию времени менеджеров до 70%</div>
+      <div class="benefit-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Круглосуточную обработку обращений</div>
+      <div class="benefit-item" style="grid-column:1 / -1;"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Единый автоматизированный процесс продаж от первого контакта до передачи сделки</div>
     </div>
   </div>
 </section>
